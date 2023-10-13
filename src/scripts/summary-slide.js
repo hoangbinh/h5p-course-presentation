@@ -229,6 +229,12 @@ const SummarySlide = (function () {
   SummarySlide.prototype.getSlideDescription = function (slideScoresSlide) {
     var self = this;
 
+    // Using slide keyword (if has)
+    var slide = self.cp.slides[slideScoresSlide.slide - 1];
+    if (self.cp.hasKeywords(slide)) {
+      return slide.keywords[0].main;
+    }
+
     // Get task description, task name or identify multiple tasks:
     var slideDescription, action;
     var slideElements = self.cp.slides[slideScoresSlide.slide - 1].elements;
